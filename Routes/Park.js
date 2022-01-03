@@ -27,7 +27,6 @@ router.post('/Park', async(req, res) => {
         const ticket_no = await pool.query(
             "INSERT INTO PARK (RC_NO, FLOOR_NO, SLOT, HOURS, TIME_IN, TIME_OUT, PARKING_CHRG) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *", [ParkCar.rc_no, ParkCar.floor_no, ParkCar.slot, ParkCar.hours, ParkCar.Time_in, ParkCar.Time_out, ParkCar.Parking_chrg]
         );
-        console.log(ticket_no);
         await pool.query(
             "CALL decrement_slots($1)", [ParkCar.floor_no]
         );
@@ -65,7 +64,7 @@ router.post('/exitPark', async(req, res) => {
         for (let i = 0; i < 2; i++) {
             hh = hh + "" + getting_hours.rows[0].hours[i];
         }
-
+        hh = parseInt(hh);
         const cost = (hh + 1) * 15;
 
         await pool.query(

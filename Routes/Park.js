@@ -52,14 +52,10 @@ router.post('/exitPark', async(req, res) => {
             "UPDATE PARK SET TIME_OUT = $1 WHERE TICKET_NO = $2", [timeO, tid.ticket_id]
         );
 
-        // await pool.query(
-        //     "UPDATE PARK SET HOURS = (TIME_OUT - TIME_IN) WHERE TICKET_NO = $1", [tid.ticket_id]
-        // );
-
         const getting_hours = await pool.query(
             "SELECT HOURS FROM PARK WHERE TICKET_NO = $1", [tid.ticket_id]
         );
-        //console.log(getting_hours.rows[0])
+        
         var hh = ""
         for (let i = 0; i < 2; i++) {
             hh = hh + "" + getting_hours.rows[0].hours[i];

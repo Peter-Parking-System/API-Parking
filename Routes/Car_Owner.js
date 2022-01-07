@@ -21,7 +21,7 @@ router.post('/newOwner', async(req, res) => {
             "SELECT OWNER_ID FROM CAR_OWNER WHERE OWNER_NAME = $1 AND PHONE_NO = $2", [nameofuser, phone_no_of_user]
         );
 
-        res.send("User Added!!! You Owner_ID is : " + temp.rows[0].owner_id);
+        res.send({message:temp.rows[0].owner_id});
 
 
     } catch (err) {

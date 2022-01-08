@@ -4,7 +4,7 @@ const app = express();
 const OwnerRoute = require('./Routes/Car_Owner');
 const CarRoute = require('./Routes/Car');
 const ParkRoute = require('./Routes/Park');
-const getParkedRoute = require('./Routes/admin_view_all_parked');
+const getParkedRoute = require('./Routes/admin_view');
 
 app.use(BodyParser.json());
 

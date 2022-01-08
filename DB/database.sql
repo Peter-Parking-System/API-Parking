@@ -43,6 +43,15 @@ CREATE TABLE PARK (
                 ON DELETE CASCADE
 );
 
+
+-- Admin Table
+
+CREATE VIEW Curr_cars_parked AS(
+    SELECT TICKET_NO, RC_NO, FLOOR_NO, SLOT, TIME_IN 
+    FROM PARK
+    WHERE TIME_OUT = null
+);
+
 -- Stored Procedure for decrementing available slots
 
 CREATE OR REPLACE PROCEDURE decrement_slots(floor int)

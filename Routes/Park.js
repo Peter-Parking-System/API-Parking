@@ -67,7 +67,7 @@ router.post('/exitPark', async(req, res) => {
             "UPDATE PARK SET PARKING_CHRG = $1 WHERE TICKET_NO = $2", [cost, tid.ticket_id]
         );
 
-        res.send("Please pay rupees " + cost + " in the nearest window.\nThank You for using Peter-Parking");
+        res.send({message:cost});
     } catch (err) {
         res.json({ message: err });
     }

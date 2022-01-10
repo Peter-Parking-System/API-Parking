@@ -14,7 +14,7 @@ router.post('/addCar', async(req, res) => {
             "INSERT INTO CARS VALUES ($1, $2, $3)", [addCar.rc_no, addCar.owner_id, addCar.model]
         );
         
-        res.send("Car Added Successfully!!!");
+        res.json({message:"Car Added Successfully!!!"});
     } catch (err) {
         res.json({ message: err });
     }

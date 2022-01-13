@@ -21,13 +21,13 @@ router.post('/addCar', async(req, res) => {
 });
 
 
-router.delete('/removeCar/:reg_no', async(req, res) => {
+router.post('/removeCar', async(req, res) => {
     try {
-        const reg_no = req.params.reg_no
+        const reg_no = req.body.reg_no
         await pool.query(
             "DELETE FROM CARS WHERE RC_NO = $1", [reg_no]
         );
-        res.send("Car successfully removed!!");
+        res.json({message:"Car successfully removed!!"});
     } catch (err) {
         res.json({ message: err });
     }

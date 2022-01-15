@@ -31,7 +31,7 @@ router.post('/Park', async(req, res) => {
             "CALL decrement_slots($1)", [ParkCar.floor_no]
         );
 
-        res.send("Please park your car in " + ParkCar.floor_no + "st floor slot number " + ParkCar.slot + ". Your ticket number is : " + ticket_no.rows[0].ticket_no +".");
+        res.send({message:"Please park your car in " + ParkCar.floor_no + "st floor slot number " + ParkCar.slot + ". Your ticket number is : " + ticket_no.rows[0].ticket_no +"."});
     } catch (err) {
         res.json({ message: err });
     }

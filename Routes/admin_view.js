@@ -13,7 +13,7 @@ router.get('/getOwners', async(req, res) => {
     const getOwners = await pool.query(
         "SELECT * from car_owner"
     );
-    res.json(getOwners);
+    res.json(getOwners.rows);
 });
 
 router.get('/getCars', async(req, res) => {

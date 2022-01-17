@@ -49,7 +49,7 @@ CREATE TABLE PARK (
 CREATE VIEW Curr_cars_parked AS(
     SELECT TICKET_NO, RC_NO, FLOOR_NO, SLOT, TIME_IN 
     FROM PARK
-    WHERE TIME_OUT = null
+    WHERE PARKING_CHRG = 0
 );
 
 -- Stored Procedure for decrementing available slots

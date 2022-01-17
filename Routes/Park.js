@@ -31,7 +31,7 @@ router.post('/Park', async(req, res) => {
             "CALL decrement_slots($1)", [ParkCar.floor_no]
         );
 
-        res.send({message:"Please park your car in " + ParkCar.floor_no + "st floor slot number " + ParkCar.slot + ". Your ticket number is : " + ticket_no.rows[0].ticket_no +"."});
+        res.send("Please park your car in " + ParkCar.floor_no + "st floor slot number " + ParkCar.slot + ". Your ticket number is : " + ticket_no.rows[0].ticket_no +".");
     } catch (err) {
         res.json({ message: err });
     }
@@ -55,7 +55,7 @@ router.post('/exitPark', async(req, res) => {
         const getting_hours = await pool.query(
             "SELECT HOURS FROM PARK WHERE TICKET_NO = $1", [tid.ticket_id]
         );
-        
+
         var hh = ""
         for (let i = 0; i < 2; i++) {
             hh = hh + "" + getting_hours.rows[0].hours[i];
